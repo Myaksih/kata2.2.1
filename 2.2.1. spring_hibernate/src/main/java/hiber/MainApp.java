@@ -36,6 +36,7 @@ public class MainApp {
       userService.add(user2);
       userService.add(user3);
       userService.add(user4);
+
       userService.getUserByCarModel("Nissan 400z");
 
 

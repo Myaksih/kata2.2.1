@@ -25,16 +25,15 @@ public class UserDaoImp implements UserDao {
    }
 
    public void getUserByCarModel(String model){
-      try(Session session = sessionFactory.getCurrentSession()) {
-         Car car = session.createQuery("FROM Car car LEFT OUTER JOIN FETCH car.user WHERE car.model =: model", Car.class)
-                 .setParameter("model", model).uniqueResult();
-         System.out.println(car.getUser());
-      }
-      catch (HibernateException e){
-         e.printStackTrace();
+
+      Car car = sessionFactory.getCurrentSession()
+              .createQuery("FROM Car car LEFT OUTER JOIN FETCH car.user WHERE car.model =: model", Car.class)
+              .setParameter("model", model).uniqueResult();
+      System.out.println(car.getUser().getFirstName());
       }
 
-   }
+
+
 
    @Override
    @SuppressWarnings("unchecked")
